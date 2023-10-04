@@ -1,0 +1,42 @@
+@import "../assets/styles/mixins";
+
+:host {
+
+  .app {
+    max-width: 1200px;
+    min-height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .forms {
+    @include df;
+    @include form-dis;
+    width: 400px;
+    height: 500px;
+    border-radius: 15px;
+    padding-top: 20px;
+  }
+
+  .form-hero {
+    @include df;
+    width: 400px;
+    height: 350px;
+  }
+
+  .form-skill {
+    @include df;
+    width: 400px;
+    height: 150px;
+    justify-content: space-between;
+  }
+
+  .show-heroes {
+    @include form-dis;
+    width: 600px;
+    min-height: 500px;
+    border-radius: 15px;
+  }
+}

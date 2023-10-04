@@ -1,0 +1,28 @@
+@import "../../../assets/styles/mixins";
+
+:host {
+
+  .dx-field {
+    display: flex;
+
+    .dx-field-label {
+      color: $color-white;
+      font-size: 15px;
+      font-weight: initial;
+    }
+  }
+
+  .form-new-hero {
+    @include form;
+    height: 300px;
+    padding-top: 20px;
+  }
+
+  dx-text-box {
+    @include input-area
+  }
+
+  dx-tag-box {
+    @include input-area
+  }
+}

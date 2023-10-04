@@ -1,0 +1,28 @@
+@import "../../../../../../assets/styles/mixins";
+
+::ng-deep .dx-popup-wrapper  .dx-overlay-content   {
+  border-radius: 30px;
+}
+
+.dx-field{
+  @include flex-row;
+  margin-bottom: 15px;
+}
+
+dx-tag-box{
+  @include input-area
+}
+
+dx-text-box{
+  @include input-area
+}
+
+dx-button{
+  background-color: $bg-popup-button-color;
+  color: $color-white;
+  margin-top: 30px;
+
+  &:hover {
+    background-color: $bg-color;
+  }
+}

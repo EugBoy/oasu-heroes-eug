@@ -1,0 +1,56 @@
+<dx-popup (onHidden)="close()"
+          [height]="400"
+          [hideOnOutsideClick]="true"
+          [visible]="true"
+          [width]="500"
+          title="Редактирование персонажа {{ currentHero[LItem.NAME] }}">
+  <div class="dx-field">
+    <div class="dx-field-label">
+      Имя
+    </div>
+    <div class="dx-field-value">
+      <dx-text-box [formControl]="nameControl"
+                   [isValid]="!(nameControl.invalid && (nameControl.dirty || nameControl.touched))"
+                   [showClearButton]="true"
+                   [text]="currentHero[LItem.NAME]"/>
+    </div>
+  </div>
+  <div class="dx-field">
+    <div class="dx-field-label">
+      Сила
+    </div>
+    <div class="dx-field-value">
+      <dx-text-box [formControl]="powerControl"
+                   [isValid]="!(powerControl.invalid && (powerControl.dirty || powerControl.touched))"
+                   [showClearButton]="true"
+                   [text]="currentHero[LHero.POWER].toString()"/>
+    </div>
+  </div>
+  <div class="dx-field">
+    <div class="dx-field-label">
+      Способности
+    </div>
+    <div class="dx-field-value">
+      <dx-tag-box [dataSource]="skills$ | async"
+                  [formControl]="skillsControl"
+                  [isValid]="!(skillsControl.invalid && (skillsControl.dirty || skillsControl.touched))"
+                  [showSelectionControls]="true"
+                  [value]="currentHero[LHero.SKILLS]"
+                  [displayExpr]="LItem.NAME"
+                  [valueExpr]="LItem.NAME"/>
+    </div>
+  </div>
+  <div class="dx-field">
+    <div class="dx-field-label">
+      Начальный уровень
+    </div>
+    <div class="dx-field-value">
+      <dx-text-box [formControl]="levelControl"
+                   [isValid]="!(levelControl.invalid && (levelControl.dirty || levelControl.touched))"
+                   [showClearButton]="true"
+                   [text]="currentHero[LHero.LEVEL].toString()"/>
+    </div>
+  </div>
+  <dx-button (click)="changeHero(currentHero[LItem.ID]!)"
+             text="Редактировать героя"/>
+</dx-popup>

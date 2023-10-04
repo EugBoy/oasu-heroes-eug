@@ -1,0 +1,32 @@
+@import "palette";
+
+@mixin input-area {
+  box-shadow: 1px 1px 1px $shadow-color;
+  margin-bottom: 10px;
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin df {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin form-dis {
+  background-color: $bg-color;
+  padding: 15px;
+}
+
+@mixin form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

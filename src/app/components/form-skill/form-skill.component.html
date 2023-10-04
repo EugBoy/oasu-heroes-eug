@@ -1,0 +1,15 @@
+<div class="dx-field form-new-skill">
+  <div class="dx-field-label">
+    Новая способность
+  </div>
+  <div class="dx-field-value">
+    <dx-text-box [formControl]="skillNameControl"
+                 [isValid]="!(skillNameControl.invalid && (skillNameControl.dirty || skillNameControl.touched))"
+                 [showClearButton]="true"
+                 width="150px"/>
+  </div>
+  <dx-button (click)="addSkill()"
+             height="25px"
+             text="Добавить способность"
+             width="190px"/>
+</div>
