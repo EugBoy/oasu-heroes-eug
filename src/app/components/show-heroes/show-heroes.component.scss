@@ -3,8 +3,7 @@
 :host {
 
   .filters {
-    display: flex;
-    flex-direction: row;
+    @include flexWrapper(row, space-between);
     width: 340px;
   }
 
@@ -14,7 +13,7 @@
   }
 
   .level-filter {
-    display: flex;
+    @include flexWrapper(row, space-between)
   }
 
   .filter-label {
@@ -24,7 +23,7 @@
   }
 
   .dx-field {
-    @include flex-row;
+    @include flexWrapper(row, space-between);
 
     .dx-field-label {
       color: $color-white;
@@ -34,7 +33,7 @@
   }
 
   .filter {
-    @include flex-row;
+    @include flexWrapper(row, space-between);
   }
 
   .show-heroes {
@@ -55,7 +54,7 @@
 
 
   .hero-title {
-    @include flex-row;
+    @include flexWrapper(row, space-between);
     justify-content: space-between;
     padding: 5px;
 
@@ -83,8 +82,8 @@
   }
 
   .hero-info {
-    display: flex;
-    justify-content: space-between;
+    @include flexWrapper(row, space-between);
+
     min-height: 40px;
 
     dx-button {
@@ -96,8 +95,7 @@
   }
 
   .hero-info-card {
-    display: flex;
-    flex-direction: column;
+    @include flexWrapper(column, space-between);
 
     .hero-info-card-power {
       padding: 5px;
@@ -113,18 +111,16 @@
   }
 
   .dx-field-sort {
-    @include df;
-    flex-direction: row;
+    @include flexWrapper(row, space-between);
     width: 560px;
-    justify-content: space-between;
     padding: 0;
   }
 
   .sort-box {
     background-color: $color-white;
     margin-top: 10px;
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     z-index: 10;
   }
 

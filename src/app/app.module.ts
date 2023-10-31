@@ -8,7 +8,7 @@ import {
   DxTextBoxModule,
   DxValidatorModule,
 } from "devextreme-angular";
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -17,7 +17,7 @@ import {ShowHeroesComponent} from './components/show-heroes/show-heroes.componen
 import {FilterHeroesPipe} from './components/show-heroes/entities/pipes/filter-heroes.pipe';
 import {PopupComponent} from "./components/show-heroes/entities/popups/popup/popup.component";
 import {FormSkillComponent} from './components/form-skill/form-skill.component';
-import {NgOptimizedImage} from "@angular/common";
+import { FormComponent } from './entities/components/form/form.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +27,7 @@ import {NgOptimizedImage} from "@angular/common";
     FilterHeroesPipe,
     PopupComponent,
     FormSkillComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
@@ -38,11 +39,8 @@ import {NgOptimizedImage} from "@angular/common";
     DxValidatorModule,
     DxAccordionModule,
     HttpClientModule,
-    DxPopupModule,
-    FormsModule,
-    NgOptimizedImage,
+    DxPopupModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

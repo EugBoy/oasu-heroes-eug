@@ -5,8 +5,8 @@ import {FormBuilder, FormControl, Validators} from "@angular/forms";
   providedIn: 'root'
 })
 export class SkillFormBuilderService {
-  constructor(
-    private readonly _formBuilder: FormBuilder,
+  constructor (
+    private readonly _formBuilder: FormBuilder
   ) {
   }
 
@@ -15,5 +15,5 @@ export class SkillFormBuilderService {
    */
   public get skillControl(): FormControl {
     return this._formBuilder.control('', [Validators.minLength(2)]);
-  };
+  }
 }

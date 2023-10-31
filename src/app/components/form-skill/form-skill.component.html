@@ -4,7 +4,7 @@
   </div>
   <div class="dx-field-value">
     <dx-text-box [formControl]="skillNameControl"
-                 [isValid]="!(skillNameControl.invalid && (skillNameControl.dirty || skillNameControl.touched))"
+                 [isValid]="skillNameControl.valid || skillNameControl.untouched"
                  [showClearButton]="true"
                  width="150px"/>
   </div>

@@ -58,9 +58,9 @@
     </div>
     <div class="sort-box">
       <img [ngClass]="{'no-sort': (sortStatus === LSort.NONE), 'up-sort': (sortStatus === LSort.ASCENDING), 'down-sort': (sortStatus === LSort.DESCENDING)}"
-           ngSrc="../../../assets/img/arrow.png"
+           src="../../../assets/img/arrow.png"
            height="20"
-           width="20">
+           width="20"/>
     </div>
   </div>
 </div>
@@ -102,5 +102,6 @@
   </div>
 </dx-accordion>
 <app-popup *ngIf="isPopupVisible"
-           [(isPopupVisible)]="isPopupVisible"
-           [currentHero]="currentHero"/>
+           [currentHero]="currentHero"
+           [isPopupVisible]="isPopupVisible"
+           (isPopupVisibleChange) = "closeHeroPopup()"/>

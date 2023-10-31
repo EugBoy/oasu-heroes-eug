@@ -6,7 +6,7 @@
  * @param DESCENDING - сортировка по убыванию;
  */
 export enum ESort {
-  NONE = 0,
+  NONE,
   ASCENDING,
   DESCENDING,
 }

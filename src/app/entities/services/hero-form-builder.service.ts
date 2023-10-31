@@ -9,7 +9,7 @@ import {LHero} from "../labels/hero.label";
 export class HeroFormBuilderService {
 
   constructor(
-    private readonly _formBuilder: FormBuilder,
+    private readonly _formBuilder: FormBuilder
   ) {
   }
 
@@ -23,5 +23,5 @@ export class HeroFormBuilderService {
       [LHero.SKILLS]: ['', [Validators.required]],
       [LHero.LEVEL]: ['', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
     });
-  };
+  }
 }

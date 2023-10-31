@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {SkillFormBuilderService} from "./entities/services/skill-form-builder.service";
 import {AppService} from "../../entities/services/app.service";
+
 @Component({
   selector: 'app-form-skill',
   templateUrl: './form-skill.component.html',
@@ -11,9 +12,9 @@ export class FormSkillComponent {
 
   public skillNameControl: FormControl = this._skillFormBuilderService.skillControl;
 
-  constructor(
+  constructor (
     private readonly _appService: AppService,
-    private readonly _skillFormBuilderService: SkillFormBuilderService,
+    private readonly _skillFormBuilderService: SkillFormBuilderService
   ) {
   }
 
@@ -27,5 +28,5 @@ export class FormSkillComponent {
     } else {
       alert('Вы допустили ошибку.');
     }
-  };
+  }
 }

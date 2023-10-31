@@ -21,45 +21,55 @@ export class FilterHeroesPipe implements PipeTransform {
    * @return {IHero[]}
    * @example [{Name: 'Ivan', level: 100}, {Name: 'Vladimir', level: 1}] --( sort = ESort.ASCENDING )--> [{Name: 'Vladimir', level: 1},{Name: 'Ivan', level: 100}]
    */
-  transform(heroes: IHero[] | null, sort: ESort, levelDown: number, levelUp: number, name: string, skills: string[]): IHero[] {
-    if (sort === ESort.ASCENDING) {
-      heroes = heroes!.sort((hero1: IHero, hero2: IHero) => {
-        return hero1[LHero.LEVEL] - hero2[LHero.LEVEL];
-      });
-    } else if (sort === ESort.DESCENDING) {
-      heroes = heroes!.sort((hero1: IHero, hero2: IHero) => {
-        return hero2[LHero.LEVEL] - hero1[LHero.LEVEL];
-      });
-    } else {
-      heroes = heroes!.sort((hero1: IHero, hero2: IHero) => {
-        return (hero1[LItem.ID]! - hero2[LItem.ID]!);
-      });
-    }
-    if (levelDown) {
-      heroes = heroes.filter((hero: IHero): boolean => {
-        return Number(hero[LHero.LEVEL]) >= levelDown;
-      });
-    }
-    if (levelUp) {
-      heroes = heroes.filter((hero: IHero): boolean => {
-        return Number(hero[LHero.LEVEL]) <= levelUp;
-      });
-    }
-    if (name) {
-      heroes = heroes.filter((hero: IHero): boolean => {
-        return hero[LItem.NAME].toLowerCase().includes(name.toLowerCase());
-      });
-    }
-    if (skills) {
-      heroes = heroes.filter((hero: IHero): boolean => {
-        for (let skill of skills) {
-          if (!hero[LHero.SKILLS].includes(skill)) {
-            return false;
-          }
+  public transform(heroes: IHero[] | null, sort: ESort, levelDown: number, levelUp: number, name: string, skills: string[]): IHero[] {
+    if (heroes) {
+      switch (sort){
+        case ESort.ASCENDING: {
+          heroes = heroes.sort((hero1: IHero, hero2: IHero) => {
+            return hero1[LHero.LEVEL] - hero2[LHero.LEVEL];
+          });
+          break;
         }
-        return true;
-      });
+        case ESort.DESCENDING: {
+          heroes = heroes.sort((hero1: IHero, hero2: IHero) => {
+            return hero2[LHero.LEVEL] - hero1[LHero.LEVEL];
+          });
+          break;
+        }
+        default: {
+          heroes = heroes.sort((hero1: IHero, hero2: IHero) => {
+            return (hero1[LItem.ID]! - hero2[LItem.ID]!);
+          });
+          break;
+        }
+      }
+      if (levelDown) {
+        heroes = heroes.filter((hero: IHero): boolean => {
+          return Number(hero[LHero.LEVEL]) >= levelDown;
+        });
+      }
+      if (levelUp) {
+        heroes = heroes.filter((hero: IHero): boolean => {
+          return Number(hero[LHero.LEVEL]) <= levelUp;
+        });
+      }
+      if (name) {
+        heroes = heroes.filter((hero: IHero): boolean => {
+          return hero[LItem.NAME].toLowerCase().includes(name.toLowerCase());
+        });
+      }
+      if (skills) {
+        heroes = heroes.filter((hero: IHero): boolean => {
+          for (let skill of skills) {
+            if (!hero[LHero.SKILLS].includes(skill)) {
+              return false;
+            }
+          }
+          return true;
+        });
+      }
+      return heroes;
     }
-    return heroes;
-  };
+    return []
+  }
 }

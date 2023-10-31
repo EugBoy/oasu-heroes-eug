@@ -1,0 +1,52 @@
+<div [class.form-new-hero-color]="!formChangeStatus" class="form-new-hero">
+
+  <div class="dx-field">
+    <div class="dx-field-label">
+      Имя
+    </div>
+    <div class="dx-field-value">
+      <dx-text-box [formControl]="nameControl"
+                   [isValid]="nameControl.valid || nameControl.untouched"
+                   [showClearButton]="true"/>
+    </div>
+  </div>
+  <div class="dx-field">
+    <div class="dx-field-label">
+      Сила
+    </div>
+    <div class="dx-field-value">
+      <dx-text-box [formControl]="powerControl"
+                   [isValid]="powerControl.valid || powerControl.untouched"
+                   [showClearButton]="true"/>
+    </div>
+  </div>
+  <div class="dx-field">
+    <div class="dx-field-label">
+      Способности
+    </div>
+    <div class="dx-field-value">
+      <dx-tag-box [dataSource]="skills$ | async"
+                  [displayExpr]="LItem.NAME"
+                  [formControl]="skillsControl"
+                  [isValid]="skillsControl.valid || skillsControl.untouched"
+                  [valueExpr]="LItem.NAME"/>
+    </div>
+  </div>
+  <div class="dx-field">
+    <div class="dx-field-label">
+      Начальный уровень
+    </div>
+    <div class="dx-field-value">
+      <dx-text-box [formControl]="levelControl"
+                   [isValid]="levelControl.valid || levelControl.untouched"
+                   [showClearButton]="true"/>
+    </div>
+  </div>
+  <dx-button *ngIf="!formChangeStatus"
+             (click)="addHero()"
+             text="Добавить героя"/>
+  <dx-button *ngIf="formChangeStatus"
+             (click)="changeHero(currentHero[LItem.ID]!)"
+             class="change-button"
+             text="Редактировать героя"/>
+</div>

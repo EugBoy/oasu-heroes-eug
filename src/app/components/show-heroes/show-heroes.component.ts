@@ -8,6 +8,7 @@ import {IHero} from "../../entities/interfaces/hero.interface";
 import {IItem} from "../../entities/interfaces/item.interface";
 import {HeroesFilterFormBuilderService} from "./entities/services/heroes-filter-form-builder.service";
 import {ESort} from "./entities/enums/sort.enum";
+import {EHeroFilter} from "./entities/enums/hero-filter.enum";
 
 @Component({
   selector: 'app-show-heroes',
@@ -29,15 +30,15 @@ export class ShowHeroesComponent implements OnInit {
   public LItem: typeof LItem = LItem;
   public LSort: typeof ESort = ESort;
 
-  constructor(
+  constructor (
     private readonly _appService: AppService,
-    private readonly _heroesFilterFormService: HeroesFilterFormBuilderService,
+    private readonly _heroesFilterFormService: HeroesFilterFormBuilderService
   ) {
   }
 
   public ngOnInit(): void {
     this._appService.getHeroes();
-  };
+  }
 
   /**
    * Метод открытия popup.
@@ -47,28 +48,35 @@ export class ShowHeroesComponent implements OnInit {
   public openEditHeroPopup(hero: IHero): void {
     this.currentHero = hero;
     this.isPopupVisible = true;
-  };
+  }
+
+  /**
+   * Метод закрытия popup.
+   */
+  public closeHeroPopup(): void {
+    this.isPopupVisible = false;
+  }
 
   /**
    * Метод меняет вид сортировки (нет сортировки, по возрастанию, по убыванию)
    */
   public sortHeroes(): void {
     this.sortStatus = (this.sortStatus + 1) % 3;
-  };
+  }
 
   public get levelDownControl(): FormControl {
-    return this.heroesFilterForm.get('levelDown') as FormControl;
-  };
+    return this.heroesFilterForm.get([EHeroFilter.LEVELDOWN]) as FormControl;
+  }
 
   public get levelUpControl(): FormControl {
-    return this.heroesFilterForm.get('levelUp') as FormControl;
-  };
+    return this.heroesFilterForm.get([EHeroFilter.LEVELUP]) as FormControl;
+  }
 
   public get skillsControl(): FormControl {
-    return this.heroesFilterForm.get('skills') as FormControl;
-  };
+    return this.heroesFilterForm.get([EHeroFilter.SKILLS]) as FormControl;
+  }
 
   public get nameControl(): FormControl {
-    return this.heroesFilterForm.get('name') as FormControl;
-  };
+    return this.heroesFilterForm.get([EHeroFilter.NAME]) as FormControl;
+  }
 }

@@ -3,7 +3,7 @@
 :host {
 
   .form-new-skill {
-    @include form;
+    @include flexWrapper(column, space-between);
     height: 150px;
   }
 
