@@ -59,14 +59,7 @@ export class FilterHeroesPipe implements PipeTransform {
         });
       }
       if (skills) {
-        heroes = heroes.filter((hero: IHero): boolean => {
-          for (let skill of skills) {
-            if (!hero[LHero.SKILLS].includes(skill)) {
-              return false;
-            }
-          }
-          return true;
-        });
+        heroes = heroes.filter((hero: IHero): boolean => !Object.values(skills).some((skill: string) => !hero[LHero.SKILLS].includes(skill)));
       }
       return heroes;
     }
