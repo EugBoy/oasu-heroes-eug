@@ -1,0 +1,140 @@
+@import "../../../assets/styles/mixins";
+
+:host {
+
+  .filters {
+    @include flexWrapper(row, space-between);
+    width: 340px;
+  }
+
+  .filters-label {
+    width: 100px;
+    margin-right: 124px;
+  }
+
+  .level-filter {
+    @include flexWrapper(row, space-between)
+  }
+
+  .filter-label {
+    width: 100px;
+    height: 30px;
+    margin-right: -7px;
+  }
+
+  .dx-field {
+    @include flexWrapper(row, space-between);
+
+    .dx-field-label {
+      color: $color-white;
+      font-size: 15px;
+      font-weight: initial;
+    }
+  }
+
+  .filter {
+    @include flexWrapper(row, space-between);
+  }
+
+  .show-heroes {
+    margin-top: 30px;
+    border-radius: 15px;
+    min-height: 20px;
+    padding: 20px;
+    background-color: $bg-color;
+    color: $color-white;
+
+    ::ng-deep .dx-accordion-item {
+      border-radius: 15px;
+      margin-bottom: 5px;
+      background-color: $color-white;
+      color: $color-black;
+    }
+  }
+
+
+  .hero-title {
+    @include flexWrapper(row, space-between);
+    justify-content: space-between;
+    padding: 5px;
+
+  }
+
+  .skills {
+    display: flex;
+    flex-wrap: wrap;
+    width: 350px;
+    min-height: 25px;
+    margin-top: 10px;
+
+    div {
+      margin-right: 5px;
+      margin-top: 5px;
+      height: 30px;
+      padding: 5px;
+    }
+
+    .skills-item {
+      background-color: $bg-color;
+      border-radius: 5px;
+      color: $color-white;
+    }
+  }
+
+  .hero-info {
+    @include flexWrapper(row, space-between);
+
+    min-height: 40px;
+
+    dx-button {
+      width: 150px;
+      height: 40px;
+      background-color: $bg-button-color;
+      color: $color-white;
+    }
+  }
+
+  .hero-info-card {
+    @include flexWrapper(column, space-between);
+
+    .hero-info-card-power {
+      padding: 5px;
+    }
+  }
+
+  dx-tag-box {
+    @include input-area
+  }
+
+  dx-text-box {
+    @include input-area
+  }
+
+  .dx-field-sort {
+    @include flexWrapper(row, space-between);
+    width: 560px;
+    padding: 0;
+  }
+
+  .sort-box {
+    background-color: $color-white;
+    margin-top: 10px;
+    width: 22px;
+    height: 22px;
+    z-index: 10;
+  }
+
+  .no-sort {
+    display: none;
+  }
+
+  .up-sort {
+    display: block;
+    transform: rotate(0deg);
+  }
+
+  .down-sort {
+    display: block;
+    transform: rotate(180deg);
+  }
+}

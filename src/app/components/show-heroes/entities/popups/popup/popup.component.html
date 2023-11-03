@@ -1,0 +1,11 @@
+<dx-popup [height]="400"
+          [hideOnOutsideClick]="true"
+          [visible]="true"
+          [width]="500"
+          (onHidden)="close()"
+          title="Редактирование персонажа {{ currentHero[LItem.NAME] }}">
+  <app-form [formChangeStatus]="true"
+            [currentHero]="currentHero"
+            [isPopupVisibleForm]="isPopupVisible"
+            (isPopupVisibleFormChange)="close()"/>
+</dx-popup>

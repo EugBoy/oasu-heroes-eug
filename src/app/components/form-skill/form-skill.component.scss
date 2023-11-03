@@ -1,0 +1,26 @@
+@import "../../../assets/styles/mixins";
+
+:host {
+
+  .form-new-skill {
+    @include flexWrapper(column, space-between);
+    height: 150px;
+  }
+
+  dx-text-box {
+    @include input-area;
+  }
+
+  .dx-field-label {
+    color: $color-white;
+    font-size: 15px;
+    font-weight: initial;
+    margin-bottom: 15px;
+    height: 30px;
+  }
+
+  dx-button {
+    @include input-area;
+    margin-top: 20px;
+  }
+}

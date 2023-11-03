@@ -1,0 +1,18 @@
+@import "palette";
+
+@mixin input-area {
+  box-shadow: 1px 1px 1px $shadow-color;
+  margin-bottom: 10px;
+}
+
+@mixin flexWrapper($flex-direction, $justify-content) {
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+}
+
+@mixin form-dis {
+  background-color: $bg-color;
+  padding: 15px;
+}
+

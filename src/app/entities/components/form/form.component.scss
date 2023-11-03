@@ -1,0 +1,43 @@
+@import "../../../../assets/styles/mixins";
+
+:host {
+
+  .dx-field {
+    @include flexWrapper(row, space-between);
+
+    .dx-field-label {
+      font-size: 15px;
+      font-weight: initial;
+    }
+  }
+
+  .form-new-hero {
+    @include flexWrapper(column, space-between);
+    height: 300px;
+    padding-top: 20px;
+  }
+
+  dx-text-box {
+    @include input-area
+  }
+
+  dx-tag-box {
+    @include input-area
+  }
+
+  .change-button{
+    background-color: $bg-popup-button-color;
+    color: $color-white;
+    margin-top: 30px;
+
+    &:hover {
+      background-color: $bg-color;
+    }
+  }
+  .form-new-hero-color div{
+    color: $color-white;
+  }
+}
+
+
+

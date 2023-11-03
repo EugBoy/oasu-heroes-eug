@@ -1,0 +1,107 @@
+<div class="dx-fieldset">
+  <div class="level-filter">
+    <div class="dx-field">
+      <div class="dx-field-label filters-label">
+        Уровень
+      </div>
+    </div>
+    <div class="filters">
+      <div class="dx-field filter">
+        <div class="dx-field-label filter-label">
+          От:
+        </div>
+        <div class="dx-field-value">
+          <dx-text-box [formControl]="levelDownControl"
+                       [isValid]="levelDownControl.valid"
+                       [showClearButton]="true"
+                       width="80px"/>
+        </div>
+      </div>
+      <div class="dx-field filter">
+        <div class="dx-field-label filter-label">
+          До:
+        </div>
+        <div class="dx-field-value">
+          <dx-text-box [formControl]="levelUpControl"
+                       [isValid]="levelUpControl.valid"
+                       [showClearButton]="true"
+                       width="80px"/>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dx-field">
+    <div class="dx-field-label">
+      Способности
+    </div>
+    <div class="dx-field-value">
+      <dx-tag-box [dataSource]="skills$ | async"
+                  [formControl]="skillsControl"
+                  [displayExpr]="LItem.NAME"
+                  [valueExpr]="LItem.NAME"/>
+    </div>
+  </div>
+  <div class="dx-field">
+    <div class="dx-field-label">
+      Поиск по имени:
+    </div>
+    <div class="dx-field-value">
+      <dx-text-box [formControl]="nameControl"
+                   [showClearButton]="true"/>
+    </div>
+  </div>
+  <div (click)="sortHeroes()"
+       class="dx-field dx-field-sort">
+    <div class="dx-field-label"
+         style="width: 600px">
+      Сортировка по уровню:
+    </div>
+    <div class="sort-box">
+      <img [ngClass]="{'no-sort': (sortStatus === LSort.NONE), 'up-sort': (sortStatus === LSort.ASCENDING), 'down-sort': (sortStatus === LSort.DESCENDING)}"
+           src="../../../assets/img/arrow.png"
+           height="20"
+           width="20"/>
+    </div>
+  </div>
+</div>
+<dx-accordion [collapsible]="true"
+              [dataSource]="heroes$ | async | filterHeroes: sortStatus : levelDownControl.value : levelUpControl.value : nameControl.value : skillsControl.value"
+              class="show-heroes"
+              itemTemplate="item"
+              itemTitleTemplate="title"
+              noDataText="Нет героев.">
+  <div *dxTemplate="let hero of 'title'">
+    <div class="hero-title">
+      <div>
+        {{ hero[LItem.NAME] }}
+      </div>
+      <div>
+        Уровень: {{ hero[LHero.LEVEL] }}
+      </div>
+    </div>
+  </div>
+  <div *dxTemplate="let hero of 'item'"
+       class="hero-info">
+    <div class="hero-info-card">
+      <div class="hero-info-card-power">
+        Сила: {{ hero[LHero.POWER] }}
+      </div>
+      <div class="skills">
+        <div class="skills-title">
+          Способности:
+        </div>
+        <div *ngFor="let skill of hero[LHero.SKILLS]"
+             class="skills-item">
+          {{ skill }}
+        </div>
+      </div>
+    </div>
+    <dx-button (click)="openEditHeroPopup(hero)"
+               class="button-info"
+               text="Редактировать"/>
+  </div>
+</dx-accordion>
+<app-popup *ngIf="isPopupVisible"
+           [currentHero]="currentHero"
+           [isPopupVisible]="isPopupVisible"
+           (isPopupVisibleChange) = "closeHeroPopup()"/>
